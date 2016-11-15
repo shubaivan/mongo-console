@@ -21,6 +21,5 @@ before_script:
 - sudo /etc/init.d/apache2 restart
 - composer self-update
 - composer install
-- php bin/reload
 script:
 - phpunit -c app/
