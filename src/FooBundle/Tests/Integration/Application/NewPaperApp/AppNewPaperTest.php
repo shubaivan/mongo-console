@@ -4,12 +4,10 @@ namespace FooBundle\Tests\Integration\Application\NewPaperApp;
 
 use AppBundle\Document\NewsPaper;
 use AppBundle\Document\Repository\NewsPaperRepository;
-use AppBundle\Document\Repository\NewsRepository;
 use FooBundle\Application\Query;
 use FooBundle\Command\HelloCommand;
 use FooBundle\Tests\Integration\OrmTestCase;
 use FooBundle\Application\News\News;
-use AppBundle\Document\News as NewsDoc;
 
 class AppNewPaperTest extends OrmTestCase
 {

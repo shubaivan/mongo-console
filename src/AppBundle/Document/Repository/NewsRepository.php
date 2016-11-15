@@ -4,8 +4,6 @@ namespace AppBundle\Document\Repository;
 
 use Doctrine\ODM\MongoDB\DocumentRepository;
 use FooBundle\Command\HelloCommand;
-use FooBundle\Domain\News\News;
-use AppBundle\Document\News as NewsDocument;
 
 class NewsRepository extends DocumentRepository
 {
@@ -16,22 +14,24 @@ class NewsRepository extends DocumentRepository
 
     /**
      * @param array $queryArray
+     *
      * @return array
+     *
      * @throws \Doctrine\ODM\MongoDB\MongoDBException
      * @throws \Exception
      */
     public function getConsoleQuery($queryArray)
     {
         $arrayFields = $this->getClassMetadata()->getFieldNames();
-        
+
         $qb = $this->createQueryBuilder()
             ->hydrate(false);
         if (array_key_exists(HelloCommand::SELECT, $queryArray)) {
             $select = explode(',', $queryArray[HelloCommand::SELECT]);
-            if  ($diff = array_diff($select, $arrayFields)) {
+            if ($diff = array_diff($select, $arrayFields)) {
                 throw new \Exception(
-                    "fields ".implode(', ', $diff)." does not exist ine model,
-                    exist fields ".implode(', ', $arrayFields)    
+                    'fields '.implode(', ', $diff).' does not exist ine model,
+                    exist fields '.implode(', ', $arrayFields)
                 );
             }
             $qb
@@ -42,9 +42,9 @@ class NewsRepository extends DocumentRepository
 //                    'description',
 //                    'page',
 //                    'createdAt'
-                );   
+                );
         }
-        
+
         if (array_key_exists(HelloCommand::WHERE, $queryArray)) {
             $r = explode('=', $queryArray[HelloCommand::WHERE]);
 
@@ -60,25 +60,25 @@ class NewsRepository extends DocumentRepository
 
         if (array_key_exists(HelloCommand::SKIP, $queryArray)) {
             $qb
-                ->skip($queryArray[HelloCommand::SKIP]);   
+                ->skip($queryArray[HelloCommand::SKIP]);
         }
 
         if (
             array_key_exists(HelloCommand::ORDER_BY_FIELD, $queryArray)
-            && array_key_exists(HelloCommand::ORDER_BY, $queryArray) 
+            && array_key_exists(HelloCommand::ORDER_BY, $queryArray)
         ) {
             $qb
                 ->sort(
                     $queryArray[HelloCommand::ORDER_BY_FIELD],
                     $queryArray[HelloCommand::ORDER_BY]
-                );   
+                );
         }
 
         $query = $qb->getQuery();
         $news = $query->execute();
 
         $result = $news->toArray();
-        
+
         return $result;
     }
 }

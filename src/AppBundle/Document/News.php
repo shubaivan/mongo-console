@@ -3,11 +3,9 @@
 namespace AppBundle\Document;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Class News
- * @package AppBundle\Document
+ * Class News.
  *
  * @ODM\Document(
  *      repositoryClass="AppBundle\Document\Repository\NewsRepository"
@@ -17,7 +15,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 class News
 {
     use Timestampable;
-    
+
     /**
      * @ODM\Id
      */
@@ -41,10 +39,10 @@ class News
     /**
      * @ODM\ReferenceOne(targetDocument="AppBundle\Document\NewsPaper")
      */
-    protected $newsPaper;    
+    protected $newsPaper;
 
     /**
-     * Get id
+     * Get id.
      *
      * @return id $id
      */
@@ -54,19 +52,21 @@ class News
     }
 
     /**
-     * Set title
+     * Set title.
      *
      * @param string $title
+     *
      * @return $this
      */
     public function setTitle($title)
     {
         $this->title = $title;
+
         return $this;
     }
 
     /**
-     * Get title
+     * Get title.
      *
      * @return string $title
      */
@@ -76,19 +76,21 @@ class News
     }
 
     /**
-     * Set description
+     * Set description.
      *
      * @param string $description
+     *
      * @return $this
      */
     public function setDescription($description)
     {
         $this->description = $description;
+
         return $this;
     }
 
     /**
-     * Get description
+     * Get description.
      *
      * @return string $description
      */
@@ -98,19 +100,21 @@ class News
     }
 
     /**
-     * Set page
+     * Set page.
      *
      * @param int $page
+     *
      * @return $this
      */
     public function setPage($page)
     {
         $this->page = $page;
+
         return $this;
     }
 
     /**
-     * Get page
+     * Get page.
      *
      * @return int $page
      */
@@ -120,19 +124,21 @@ class News
     }
 
     /**
-     * Set newsPaper
+     * Set newsPaper.
      *
      * @param NewsPaper $newsPaper
+     *
      * @return $this
      */
     public function setNewsPaper(\AppBundle\Document\NewsPaper $newsPaper)
     {
         $this->newsPaper = $newsPaper;
+
         return $this;
     }
 
     /**
-     * Get newsPaper
+     * Get newsPaper.
      *
      * @return NewsPaper $newsPaper
      */

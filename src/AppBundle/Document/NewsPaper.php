@@ -3,11 +3,9 @@
 namespace AppBundle\Document;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Class NewsPaper
- * @package AppBundle\Document
+ * Class NewsPaper.
  *
  * @ODM\Document(
  *      repositoryClass="AppBundle\Document\Repository\NewsPaperRepository"
@@ -17,7 +15,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 class NewsPaper
 {
     use Timestampable;
-    
+
     /**
      * @ODM\Id
      */
@@ -40,9 +38,9 @@ class NewsPaper
     {
         $this->news = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     /**
-     * Get id
+     * Get id.
      *
      * @return id $id
      */
@@ -52,19 +50,21 @@ class NewsPaper
     }
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
     {
         $this->name = $name;
+
         return $this;
     }
 
     /**
-     * Get name
+     * Get name.
      *
      * @return string $name
      */
@@ -74,7 +74,7 @@ class NewsPaper
     }
 
     /**
-     * Add news
+     * Add news.
      *
      * @param News $news
      */
@@ -84,7 +84,7 @@ class NewsPaper
     }
 
     /**
-     * Remove news
+     * Remove news.
      *
      * @param News $news
      */
@@ -94,7 +94,7 @@ class NewsPaper
     }
 
     /**
-     * Get news
+     * Get news.
      *
      * @return \Doctrine\Common\Collections\Collection $news
      */

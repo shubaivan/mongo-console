@@ -31,9 +31,10 @@ trait Timestampable
     protected $deletedAt;
 
     /**
-     * Set createdAt
+     * Set createdAt.
      *
-     * @param  date $createdAt
+     * @param date $createdAt
+     *
      * @return self
      */
     public function setCreatedAt($createdAt)
@@ -44,7 +45,7 @@ trait Timestampable
     }
 
     /**
-     * Get createdAt
+     * Get createdAt.
      *
      * @return date $createdAt
      */
@@ -54,9 +55,10 @@ trait Timestampable
     }
 
     /**
-     * Set updatedAt
+     * Set updatedAt.
      *
-     * @param  date $updatedAt
+     * @param date $updatedAt
+     *
      * @return self
      */
     public function setUpdatedAt($updatedAt)
@@ -67,7 +69,7 @@ trait Timestampable
     }
 
     /**
-     * Get updatedAt
+     * Get updatedAt.
      *
      * @return date $updatedAt
      */
@@ -77,9 +79,10 @@ trait Timestampable
     }
 
     /**
-     * Set deletedAt
+     * Set deletedAt.
      *
-     * @param  date $deletedAt
+     * @param date $deletedAt
+     *
      * @return self
      */
     public function setDeletedAt($deletedAt)
@@ -90,7 +93,7 @@ trait Timestampable
     }
 
     /**
-     * Get deletedAt
+     * Get deletedAt.
      *
      * @return date $deletedAt
      */

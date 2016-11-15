@@ -14,9 +14,9 @@ class HelloCommand extends ContainerAwareCommand
     const TABLE_NEWS_PAPER = 'newsPaper';
     const TABLES = [
         0 => self::TABLE_NEWS,
-        1 => self::TABLE_NEWS_PAPER
+        1 => self::TABLE_NEWS_PAPER,
     ];
-    
+
     const SELECT = 'SELECT';
     const FROM = 'FROM';
     const WHERE = 'WHERE';
@@ -55,7 +55,7 @@ class HelloCommand extends ContainerAwareCommand
         });
         try {
             $text = $this->getQueryApplication()
-                ->getDocument($queryArray);   
+                ->getDocument($queryArray);
         } catch (\Exception $e) {
             $text = $e->getMessage();
         }

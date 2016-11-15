@@ -84,10 +84,10 @@ class AppNewsTest extends OrmTestCase
         });
         $expected = "this table test not exist\n
                 exist: ".implode(', ', HelloCommand::TABLES);
-                
+
         try {
             $response = $this->getService()
-                ->getDocument($queryArray);            
+                ->getDocument($queryArray);
         } catch (\Exception $e) {
             $response = $e->getMessage();
         }

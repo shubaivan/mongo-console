@@ -3,7 +3,6 @@
 namespace FooBundle\Domain\NewsPaper;
 
 use AppBundle\Document\Repository\NewsPaperRepository;
-use AppBundle\Document\Repository\NewsRepository;
 
 class NewsPaper implements NewsPaperInterface
 {

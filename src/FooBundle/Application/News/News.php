@@ -2,7 +2,6 @@
 
 namespace FooBundle\Application\News;
 
-use FooBundle\Command\HelloCommand;
 use FooBundle\Domain\News\NewsInterface as NewsInterfaceDomain;
 
 class News implements NewsInterface
@@ -35,13 +34,13 @@ class News implements NewsInterface
             $response[$key]['_id'] = $id['$id'];
             if (isset($response[$key]['createdAt'])) {
                 $mongoDate = $response[$key]['createdAt'];
-                /** @var \MongoDate $mongoDate */
+                /* @var \MongoDate $mongoDate */
                 $response[$key]['createdAt'] = $mongoDate->toDateTime()->format('Y-m-d');
             }
 
             if (isset($response[$key]['updatedAt'])) {
                 $mongoDate = $response[$key]['updatedAt'];
-                /** @var \MongoDate $mongoDate */
+                /* @var \MongoDate $mongoDate */
                 $response[$key]['updatedAt'] = $mongoDate->toDateTime()->format('Y-m-d');
             }
             $output = implode(', ', array_map(

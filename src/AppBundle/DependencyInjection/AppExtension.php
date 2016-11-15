@@ -8,12 +8,10 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\Config\FileLocator;
 
 /**
- * Class AppExtension
- * @package FooBundle\DependencyInjection
+ * Class AppExtension.
  */
 class AppExtension extends Extension
 {
-
     /**
      * {@inheritdoc}
      */

@@ -23,8 +23,8 @@ class DataLoader extends DataFixtureLoader
 
     /**
      * @param string|object $class
-     * @param int|null $count
-     * @param string|null $dir
+     * @param int|null      $count
+     * @param string|null   $dir
      */
     public function addFixture($class, $count, $dir = null)
     {
@@ -32,11 +32,11 @@ class DataLoader extends DataFixtureLoader
 
         $fixtureName = sprintf('%s/%s.%s', $dir, $className, self::FIXTURES_EXT);
 
-        $fixturePath = $this->getSourceDir() . $fixtureName;
+        $fixturePath = $this->getSourceDir().$fixtureName;
 
         if (file_exists($fixturePath)) {
             if ($count) {
-                for ($i = 0; $i < $count; $i ++) {
+                for ($i = 0; $i < $count; ++$i) {
                     $this->fixturesPaths[] = $fixturePath;
                 }
             } else {
