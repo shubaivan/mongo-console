@@ -18,9 +18,9 @@ swiftmailer:
 doctrine_mongodb:
     connections:
         default:
-            server: %database_server_test%
+            server: "%database_server_test%"
             options: {}
-    default_database: %database_name_test%
+    default_database: "%database_name_test%"
     document_managers:
         default:
             auto_mapping: true

@@ -13,6 +13,7 @@ class News implements NewsInterface
 
     /**
      * News constructor.
+     *
      * @param NewsInterfaceDomain $newsInterfaceDomain
      */
     public function __construct(
@@ -22,13 +23,14 @@ class News implements NewsInterface
     }
 
     /**
-     * {@inheritdoc
+     * {@inheritdoc.
      */
-    public function getDocumnet($queryArray) {
+    public function getDocumnet($queryArray)
+    {
         $response = $this->getNewsInterfaceDomain()->getConsoleQuery($queryArray);
-        $return = "";
-        foreach ($response as $key=>$value) {
-            $id = (array)$value['_id'];
+        $return = '';
+        foreach ($response as $key => $value) {
+            $id = (array) $value['_id'];
             $response[$key]['_id'] = $id['$id'];
 
             $output = implode(', ', array_map(
@@ -38,13 +40,15 @@ class News implements NewsInterface
             ));
             $return .= $output."\n";
         }
+
         return $return;
     }
-    
+
     /**
      * @return NewsInterfaceDomain
      */
-    private function getNewsInterfaceDomain() {
+    private function getNewsInterfaceDomain()
+    {
         return $this->newsInterfaceDomain;
     }
 }

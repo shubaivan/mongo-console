@@ -47,8 +47,6 @@ class OrmTestCase extends WebTestCase
     public function setUp()
     {
         parent::setUp();
-
-//        $createSchema && $this->createSchema();
     }
 
     /**
@@ -75,8 +73,6 @@ class OrmTestCase extends WebTestCase
         $this->container = static::$kernel->getContainer();
         $this->dm = $this->getDocumentManager();
     }
-
- 
 
     /**
      * Returns DI Container.
@@ -119,5 +115,5 @@ class OrmTestCase extends WebTestCase
         }
 
         $loader->load($this->getDocumentManager());
-    }    
+    }
 }

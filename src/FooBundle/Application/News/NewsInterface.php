@@ -2,8 +2,6 @@
 
 namespace FooBundle\Application\News;
 
-use Symfony\Component\HttpFoundation\ParameterBag;
-
 interface NewsInterface
 {
     /**

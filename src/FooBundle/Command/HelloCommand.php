@@ -1,12 +1,11 @@
 <?php
+
 namespace FooBundle\Command;
 
 use FooBundle\Application\News\News;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class HelloCommand extends ContainerAwareCommand
@@ -44,10 +43,10 @@ class HelloCommand extends ContainerAwareCommand
         $array[self::SKIP] = $input->getArgument(self::SKIP);
         $array[self::LIMIT] = $input->getArgument(self::LIMIT);
 
-        $queryArray = array_filter($array, function($value) { 
-            return $value !== null && $value != "null"; 
+        $queryArray = array_filter($array, function ($value) {
+            return $value !== null && $value != 'null';
         });
-        
+
         $text = $this->getNewsApplication()->getDocumnet($queryArray);
         $output->writeln($text);
     }

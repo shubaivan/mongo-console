@@ -13,6 +13,7 @@ class News implements NewsInterface
 
     /**
      * News constructor.
+     *
      * @param NewsRepository $newsRepository
      */
     public function __construct(
@@ -24,14 +25,16 @@ class News implements NewsInterface
     /**
      * {@inheritdoc}
      */
-    public function getConsoleQuery($queryArray){
+    public function getConsoleQuery($queryArray)
+    {
         return $this->getNewsRepository()->getConsoleQuery($queryArray);
     }
 
     /**
      * @return NewsRepository
      */
-    private function getNewsRepository() {
+    private function getNewsRepository()
+    {
         return $this->newsRepository;
     }
 }

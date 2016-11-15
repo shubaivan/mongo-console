@@ -14,7 +14,7 @@ class AppNewsTest extends OrmTestCase
      * @var NewsRepository
      */
     private $newsRepository;
-    
+
     /**
      * Set up.
      */
@@ -24,15 +24,15 @@ class AppNewsTest extends OrmTestCase
         $this->newsRepository = $documentManager->getRepository(NewsDoc::class);
         parent::setUp();
     }
-    
-    public function testGetDocumnetTest() 
+
+    public function testGetDocumnetTest()
     {
         $repository = $this->newsRepository;
-        /** @var NewsDoc[] $news */
+        /* @var NewsDoc[] $news */
         $newsExist = $repository->findAll();
 
         foreach ($newsExist as $item) {
-            $this->getDocumentManager()->remove($item);            
+            $this->getDocumentManager()->remove($item);
         }
         $this->getDocumentManager()->flush();
         $this->loadFixtures([[NewsDoc::class, 3]]);
@@ -40,13 +40,13 @@ class AppNewsTest extends OrmTestCase
         /** @var NewsDoc[] $news */
         $news = $repository->findAll();
         $this->assertCount(3, $news);
-        
+
         $new2 = $news[1];
         $new3 = $news[2];
-        
-        $expected = 
-            '_id='.'\''.(string)$new2->getId().'\''.', title='.'\''.$new2->getTitle().'\''.', description='.'\''.$new2->getDescription().'\''."\n".
-            '_id='.'\''.(string)$new3->getId().'\''.', title='.'\''.$new3->getTitle().'\''.', description='.'\''.$new3->getDescription().'\''."\n";
+
+        $expected =
+            '_id='.'\''.(string) $new2->getId().'\''.', title='.'\''.$new2->getTitle().'\''.', description='.'\''.$new2->getDescription().'\''."\n".
+            '_id='.'\''.(string) $new3->getId().'\''.', title='.'\''.$new3->getTitle().'\''.', description='.'\''.$new3->getDescription().'\''."\n";
 
         $array = [];
         $array[HelloCommand::SELECT] = 'title,description';
@@ -57,10 +57,10 @@ class AppNewsTest extends OrmTestCase
         $array[HelloCommand::SKIP] = '1';
         $array[HelloCommand::LIMIT] = '2';
 
-        $queryArray = array_filter($array, function($value) {
-            return $value !== null && $value != "null";
+        $queryArray = array_filter($array, function ($value) {
+            return $value !== null && $value != 'null';
         });
-        
+
         $response = $this->getService()
             ->getDocumnet($queryArray);
 
