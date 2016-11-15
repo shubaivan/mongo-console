@@ -1,22 +1,30 @@
+AppBundle\Document\NewsPaper:
+  newsPaper{1..2}:
+    name: <word()>
+
 AppBundle\Document\News:
   news1:
     title: culpa
     description: <word()>
     page: 2
+    newsPaper: @newsPaper*
   news2:
     title: culpa
     description: <word()>
     page: 2
+    newsPaper: @newsPaper*
   news3:
     title: culpa
     description: <word()>
     page: 2
+    newsPaper: @newsPaper*
   news4:
     title: culpa
     description: <word()>
     page: 2
+    newsPaper: @newsPaper*
   news5:
     title: culpa
     description: <word()>
     page: 2
-
+    newsPaper: @newsPaper*

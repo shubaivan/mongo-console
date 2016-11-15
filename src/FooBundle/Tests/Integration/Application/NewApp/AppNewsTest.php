@@ -1,8 +1,9 @@
 <?php
 
-namespace FooBundle\Tests\Integration\Application\Notifications;
+namespace FooBundle\Tests\Integration\Application\NewApp;
 
 use AppBundle\Document\Repository\NewsRepository;
+use FooBundle\Application\Query;
 use FooBundle\Command\HelloCommand;
 use FooBundle\Tests\Integration\OrmTestCase;
 use FooBundle\Application\News\News;
@@ -25,7 +26,7 @@ class AppNewsTest extends OrmTestCase
         parent::setUp();
     }
 
-    public function testGetDocumnetTest()
+    public function testGetDocumentTest()
     {
         $repository = $this->newsRepository;
         /* @var NewsDoc[] $news */
@@ -62,7 +63,34 @@ class AppNewsTest extends OrmTestCase
         });
 
         $response = $this->getService()
-            ->getDocumnet($queryArray);
+            ->getDocument($queryArray);
+
+        $this->assertEquals($response, $expected);
+    }
+
+    public function testGetDocumentNotExistTableTest()
+    {
+        $array = [];
+        $array[HelloCommand::SELECT] = 'title,description';
+        $array[HelloCommand::FROM] = 'test';
+        $array[HelloCommand::WHERE] = 'title=culpa';
+        $array[HelloCommand::ORDER_BY_FIELD] = 'title';
+        $array[HelloCommand::ORDER_BY] = 'desc';
+        $array[HelloCommand::SKIP] = '1';
+        $array[HelloCommand::LIMIT] = '2';
+
+        $queryArray = array_filter($array, function ($value) {
+            return $value !== null && $value != 'null';
+        });
+        $expected = "this table test not exist\n
+                exist: ".implode(', ', HelloCommand::TABLES);
+                
+        try {
+            $response = $this->getService()
+                ->getDocument($queryArray);            
+        } catch (\Exception $e) {
+            $response = $e->getMessage();
+        }
 
         $this->assertEquals($response, $expected);
     }
@@ -72,8 +100,9 @@ class AppNewsTest extends OrmTestCase
      */
     private function getService()
     {
-        return new News(
-            $this->getContainer()->get('app.domain.news')
+        return new Query(
+            $this->getContainer()->get('app.application.news'),
+            $this->getContainer()->get('app.application.news_paper')
         );
     }
 }

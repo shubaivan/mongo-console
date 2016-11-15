@@ -2,7 +2,7 @@
 
 namespace FooBundle\Command;
 
-use FooBundle\Application\News\News;
+use FooBundle\Application\Query;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -10,6 +10,13 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class HelloCommand extends ContainerAwareCommand
 {
+    const TABLE_NEWS = 'news';
+    const TABLE_NEWS_PAPER = 'newsPaper';
+    const TABLES = [
+        0 => self::TABLE_NEWS,
+        1 => self::TABLE_NEWS_PAPER
+    ];
+    
     const SELECT = 'SELECT';
     const FROM = 'FROM';
     const WHERE = 'WHERE';
@@ -46,16 +53,20 @@ class HelloCommand extends ContainerAwareCommand
         $queryArray = array_filter($array, function ($value) {
             return $value !== null && $value != 'null';
         });
-
-        $text = $this->getNewsApplication()->getDocumnet($queryArray);
+        try {
+            $text = $this->getQueryApplication()
+                ->getDocument($queryArray);   
+        } catch (\Exception $e) {
+            $text = $e->getMessage();
+        }
         $output->writeln($text);
     }
 
     /**
-     * @return News
+     * @return Query
      */
-    private function getNewsApplication()
+    private function getQueryApplication()
     {
-        return $this->getContainer()->get('app.application.news');
+        return $this->getContainer()->get('app.application.query');
     }
 }

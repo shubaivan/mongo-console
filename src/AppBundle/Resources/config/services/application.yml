@@ -1,8 +1,21 @@
 parameters:
     foo.application.news.class:                             FooBundle\Application\News\News
+    foo.application.query.class:                            FooBundle\Application\Query
+    foo.application.news_paper.class:                       FooBundle\Application\NewsPaper\NewsPaper
 
 services:
     app.application.news:
         class: "%foo.application.news.class%"
         arguments:
             - "@app.domain.news"
+
+    app.application.query:
+        class: "%foo.application.query.class%"
+        arguments:
+            - "@app.application.news"
+            - "@app.application.news_paper"
+
+    app.application.news_paper:
+        class: "%foo.application.news_paper.class%"
+        arguments:
+            - "@app.domain.news_paper"

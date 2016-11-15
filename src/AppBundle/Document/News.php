@@ -39,6 +39,11 @@ class News
     protected $page;
 
     /**
+     * @ODM\ReferenceOne(targetDocument="AppBundle\Document\NewsPaper")
+     */
+    protected $newsPaper;    
+
+    /**
      * Get id
      *
      * @return id $id
@@ -112,5 +117,27 @@ class News
     public function getPage()
     {
         return $this->page;
+    }
+
+    /**
+     * Set newsPaper
+     *
+     * @param NewsPaper $newsPaper
+     * @return $this
+     */
+    public function setNewsPaper(\AppBundle\Document\NewsPaper $newsPaper)
+    {
+        $this->newsPaper = $newsPaper;
+        return $this;
+    }
+
+    /**
+     * Get newsPaper
+     *
+     * @return NewsPaper $newsPaper
+     */
+    public function getNewsPaper()
+    {
+        return $this->newsPaper;
     }
 }

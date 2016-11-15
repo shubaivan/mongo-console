@@ -1,8 +1,14 @@
 parameters:
     foo.domain.news.class:                             FooBundle\Domain\News\News
+    foo.domain.news_paper.class:                             FooBundle\Domain\NewsPaper\NewsPaper
 
 services:
     app.domain.news:
         class:            "%foo.domain.news.class%"
         arguments:
             - "@app.repository.news"
+
+    app.domain.news_paper:
+        class:            "%foo.domain.news_paper.class%"
+        arguments:
+            - "@app.repository.news_paper"

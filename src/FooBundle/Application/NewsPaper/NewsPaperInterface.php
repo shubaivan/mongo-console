@@ -1,8 +1,8 @@
 <?php
 
-namespace FooBundle\Application\News;
+namespace FooBundle\Application\NewsPaper;
 
-interface NewsInterface
+interface NewsPaperInterface
 {
     /**
      * @param array $queryArray

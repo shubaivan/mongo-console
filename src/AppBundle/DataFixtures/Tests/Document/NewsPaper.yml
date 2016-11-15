@@ -1,0 +1,3 @@
+AppBundle\Document\NewsPaper:
+  newsPaper1:
+    name: <word()>

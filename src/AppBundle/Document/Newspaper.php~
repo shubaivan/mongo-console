@@ -1,0 +1,35 @@
+<?php
+
+namespace AppBundle\Document;
+
+use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+use Gedmo\Mapping\Annotation as Gedmo;
+
+/**
+ * Class Newspaper
+ * @package AppBundle\Document
+ *
+ * @ODM\Document(
+ *      repositoryClass="AppBundle\Document\Repository\NewspaperRepository"
+ * )
+ * @ODM\HasLifecycleCallbacks()
+ */
+class Newspaper
+{
+    use Timestampable;
+    
+    /**
+     * @ODM\Id
+     */
+    protected $id;
+
+    /**
+     * @ODM\Field(type="string")
+     */
+    protected $name;
+
+    /**
+     * @ODM\ReferenceMany(targetDocument="AppBundle\Document\News")
+     */
+    protected $news;
+}

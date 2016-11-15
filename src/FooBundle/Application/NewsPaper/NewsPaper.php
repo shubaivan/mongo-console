@@ -1,26 +1,27 @@
 <?php
 
-namespace FooBundle\Application\News;
+namespace FooBundle\Application\NewsPaper;
 
 use FooBundle\Command\HelloCommand;
 use FooBundle\Domain\News\NewsInterface as NewsInterfaceDomain;
+use FooBundle\Domain\NewsPaper\NewsPaper as NewsPaperDomain;
 
-class News implements NewsInterface
+class NewsPaper implements NewsPaperInterface
 {
     /**
-     * @var NewsInterfaceDomain
+     * @var NewsPaperDomain
      */
-    private $newsInterfaceDomain;
+    private $newsPaperDomain;
 
     /**
      * News constructor.
      *
-     * @param NewsInterfaceDomain $newsInterfaceDomain
+     * @param NewsPaperDomain $newsPaperDomain
      */
     public function __construct(
-        NewsInterfaceDomain $newsInterfaceDomain
+        NewsPaperDomain $newsPaperDomain
     ) {
-        $this->newsInterfaceDomain = $newsInterfaceDomain;
+        $this->newsPaperDomain = $newsPaperDomain;
     }
 
     /**
@@ -28,7 +29,8 @@ class News implements NewsInterface
      */
     public function getDocument($queryArray)
     {
-        $response = $this->getNewsInterfaceDomain()->getConsoleQuery($queryArray);
+        $response = $this->getNewsPaperDomain()
+            ->getConsoleQuery($queryArray);
         $return = '';
         foreach ($response as $key => $value) {
             $id = (array) $value['_id'];
@@ -44,6 +46,7 @@ class News implements NewsInterface
                 /** @var \MongoDate $mongoDate */
                 $response[$key]['updatedAt'] = $mongoDate->toDateTime()->format('Y-m-d');
             }
+
             $output = implode(', ', array_map(
                 function ($v, $k) { return sprintf("%s='%s'", $k, $v); },
                 $response[$key],
@@ -56,10 +59,10 @@ class News implements NewsInterface
     }
 
     /**
-     * @return NewsInterfaceDomain
+     * @return NewsPaperDomain
      */
-    private function getNewsInterfaceDomain()
+    private function getNewsPaperDomain()
     {
-        return $this->newsInterfaceDomain;
+        return $this->newsPaperDomain;
     }
 }

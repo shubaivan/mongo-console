@@ -4,10 +4,8 @@ namespace AppBundle\Document\Repository;
 
 use Doctrine\ODM\MongoDB\DocumentRepository;
 use FooBundle\Command\HelloCommand;
-use FooBundle\Domain\News\News;
-use AppBundle\Document\News as NewsDocument;
 
-class NewsRepository extends DocumentRepository
+class NewsPaperRepository extends DocumentRepository
 {
     public function findNewsById($id)
     {
