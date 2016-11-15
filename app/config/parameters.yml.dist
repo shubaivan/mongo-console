@@ -4,6 +4,8 @@
 parameters:
     database_server: "mongodb://localhost:27017"
     database_name: mev
+    database_server_test: 'mongodb://localhost:27017'
+    database_name_test: mev_test
     # You should uncomment this if you want use pdo_sqlite
     # database_path: "%kernel.root_dir%/data.db3"
 
