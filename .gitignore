@@ -10,4 +10,5 @@
 /build/
 /vendor/
 /bin/
+!/bin/reload
 /composer.phar
