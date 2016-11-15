@@ -1,0 +1,8 @@
+parameters:
+    foo.domain.news.class:                             FooBundle\Domain\News\News
+
+services:
+    app.domain.news:
+        class:            "%foo.domain.news.class%"
+        arguments:
+            - "@app.repository.news"

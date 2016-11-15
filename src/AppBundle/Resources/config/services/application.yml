@@ -1,0 +1,8 @@
+parameters:
+    foo.application.news.class:                             FooBundle\Application\News\News
+
+services:
+    app.application.news:
+        class: "%foo.application.news.class%"
+        arguments:
+            - "@app.domain.news"

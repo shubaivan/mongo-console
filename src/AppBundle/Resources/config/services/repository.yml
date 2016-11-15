@@ -1,0 +1,11 @@
+parameters:
+    app.repository.news.class:                             AppBundle\Document\Repository\NewsRepository
+    app.document.news.class:                               AppBundle\Document\News
+
+services:
+    app.repository.news:
+        class:            "%app.repository.news.class%"
+        factory_service:  doctrine.odm.mongodb.document_manager
+        factory_method:   getRepository
+        arguments:
+            - "%app.document.news.class%"

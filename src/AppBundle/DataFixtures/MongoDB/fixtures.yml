@@ -1,0 +1,22 @@
+AppBundle\Document\News:
+  news1:
+    title: culpa
+    description: <word()>
+    page: 2
+  news2:
+    title: culpa
+    description: <word()>
+    page: 2
+  news3:
+    title: culpa
+    description: <word()>
+    page: 2
+  news4:
+    title: culpa
+    description: <word()>
+    page: 2
+  news5:
+    title: culpa
+    description: <word()>
+    page: 2
+

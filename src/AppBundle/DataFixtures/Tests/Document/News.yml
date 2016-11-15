@@ -1,0 +1,5 @@
+AppBundle\Document\News:
+  news:
+    title: culpa
+    description: <word()>
+    page: 2
