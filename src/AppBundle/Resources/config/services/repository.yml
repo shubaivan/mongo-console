@@ -5,7 +5,6 @@ parameters:
 services:
     app.repository.news:
         class:            "%app.repository.news.class%"
-        factory_service:  doctrine.odm.mongodb.document_manager
-        factory_method:   getRepository
+        factory:          ["@doctrine.odm.mongodb.document_manager", getRepository]
         arguments:
             - "%app.document.news.class%"
